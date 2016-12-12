@@ -3,6 +3,8 @@ a configurable tokenizer and parser for generic purposes.  It was developed for 
 
 Concepts:
 + terminal and non-terminal symbols - terminal symbols are those with a fixed pattern and length, non-terminal are otherwise.
++ captures and referencing
++ jump points, groups, look behinf and ahead, and alterations
 + symbol syntax group - symbols comprized of different character groups, which allow for word boundry determination
 
 class             | example input   | regex                 | description
@@ -18,8 +20,7 @@ character class   |                 | [^a-zA-Z0-9-]         | any except alphanu
 character class   |                 | [^\w-]                | any except alphanumeric or a dash point
 character class   |                 | [^[:alpha:]]          | any except alpha point
 character class   |                 | [^[:alnum:]]          | any except alphanumeric point
-escaped character |                 | \\*non-escape*        | any literal character except escape, anchor, 
-                  |                 |                       |   boundry or special character 
+escaped character |                 | \\*non-escape*        | any literal character except escape, anchor, boundry or special character
 escaped character |                 | \\n                   | linefeed point
 escaped character |                 | \\r                   | return point
 escaped character |                 | \\t                   | tab point
@@ -35,18 +36,6 @@ escape class      |                 | \\d                   | any digit point
 escape class      |                 | \\s                   | any whitespace point
 escape class      |                 | \\w                   | any alphanumeric point
 special character |                 | .                     | any characher except new line and end of line characters
-anchor            |                 | ^                     | at the beginning of input
-anchor            |                 | $                     | at the end of input
-boundry           |                 | ^                     | [multiline] at the beginning of a line (\*index) 
-boundry           |                 | $                     | [multiline] at the end of a line
-boundry           |                 | \A                    | not at the beginning of input
-boundry           |                 | \B                    | not at a word boundry
-boundry           |                 | \G                    | not at the beginning or end of input
-boundry           |                 | \Z                    | not at the end of input
-boundry           |                 | \a                    | at the beginning of input
-boundry           |                 | \b                    | at a word boundry
-boundry           |                 | \g                    | at the beginning or end of input
-boundry           |                 | \z                    | at the end of input
 
 + symbol syntax quantifiers - symbol recognition using limits with greedy, docile, possessive, lazy and expective
 
@@ -88,7 +77,24 @@ lazy,expective    |                 | A{m,}?B  | m or more, as few as needed (la
 lazy,expective    |                 | A{m,n}?B | m to n, as few as needed (lazy), until B (expective) 
 lazy,expective    |                 | A{,n}?B  | 0 to n, as few as needed (lazy), until B (expective) 
 
-+ boundry types - (whitespace seperated) and (word or group boundry)
++ anchor and boundry types, and look ahead and behind - (whitespace seperated) and (word or group boundry)
 
-
+type              | example input   | regex                 | description
+----------------- | --------------- | --------------------- | -----------
+anchor            |                 | ^                     | at the beginning of input
+anchor            |                 | $                     | at the end of input
+boundry           |                 | ^                     | [multiline] at the beginning of a line (\*index) 
+boundry           |                 | $                     | [multiline] at the end of a line
+boundry           |                 | \A                    | not at the beginning of input
+boundry           |                 | \B                    | not at a word boundry
+boundry           |                 | \G                    | not at the beginning or end of input
+boundry           |                 | \Z                    | not at the end of input
+boundry           |                 | \a                    | at the beginning of input
+boundry           |                 | \b                    | at a word boundry
+boundry           |                 | \g                    | at the beginning or end of input
+boundry           |                 | \z                    | at the end of input
+lookahead         |                 | (?=*expression*)      | has a *expression* ahead
+lookahead,negate  |                 | (?!*expression*)      | doesn't have a *expression* ahead
+lookbehind        |                 | (?<=*expression*)     | has a *expression* behind
+lookbehind,negate |                 | (?<!*expression*)     | doesn't have a *expression* behind
 
