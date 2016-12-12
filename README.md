@@ -18,7 +18,8 @@ character class   |                 | [^a-zA-Z0-9-]         | any except alphanu
 character class   |                 | [^\w-]                | any except alphanumeric or a dash point
 character class   |                 | [^[:alpha:]]          | any except alpha point
 character class   |                 | [^[:alnum:]]          | any except alphanumeric point
-escaped character |                 | \\*non-escape*        | any non-escaped literal character 
+escaped character |                 | \\*non-escape*        | any literal character except escape, anchor, 
+                  |                 |                       |   boundry or special character 
 escaped character |                 | \\n                   | linefeed point
 escaped character |                 | \\r                   | return point
 escaped character |                 | \\t                   | tab point
@@ -34,6 +35,18 @@ escape class      |                 | \\d                   | any digit point
 escape class      |                 | \\s                   | any whitespace point
 escape class      |                 | \\w                   | any alphanumeric point
 special character |                 | .                     | any characher except new line and end of line characters
+anchor            |                 | ^                     | at the beginning of input
+anchor            |                 | $                     | at the end of input
+boundry           |                 | ^                     | [multiline] at the beginning of a line (\*index) 
+boundry           |                 | $                     | [multiline] at the end of a line
+boundry           |                 | \A                    | not at the beginning of input
+boundry           |                 | \B                    | not at a word boundry
+boundry           |                 | \G                    | not at the beginning or end of input
+boundry           |                 | \Z                    | not at the end of input
+boundry           |                 | \a                    | at the beginning of input
+boundry           |                 | \b                    | at a word boundry
+boundry           |                 | \g                    | at the beginning or end of input
+boundry           |                 | \z                    | at the end of input
 
 + symbol syntax quantifiers - symbol recognition using limits with greedy, docile, possessive, lazy and expective
 
