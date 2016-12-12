@@ -4,7 +4,7 @@ a configurable tokenizer and parser for generic purposes.  It was developed for 
 Concepts:
 + terminal and non-terminal symbols - terminal symbols are those with a fixed pattern and length, non-terminal are otherwise.
 + symbol syntax group - symbols comprized of different character groups, which allow for word boundry determination
-+ symbol syntax quantifiers - symbol recognition using greedy, docile, possessive, lazy and helpful
++ symbol syntax quantifiers - symbol recognition using limits with greedy, docile, possessive, lazy and helpful
 
 quantifier        | example input   | regex   | description
 ----------------- | --------------- | ------- | -----
@@ -37,7 +37,7 @@ lazy,helpful      |                 | A{x,}?  | x or more, as few as needed (laz
 lazy,helpful      |                 | A{x,y}? | x to y, as few as needed (lazy), backtrack if needed (helpful) 
 lazy,helpful      |                 | A{,y}?  | 0 to y, as few as needed (lazy), backtrack if needed (helpful) 
 
-+ word boundry types - whitespace seperated, group seperated, or both
++ boundry types - (whitespace seperated) and (word or group boundry)
 
 
 
