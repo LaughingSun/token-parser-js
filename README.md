@@ -5,15 +5,35 @@ Concepts:
 + terminal and non-terminal symbols - terminal symbols are those with a fixed pattern and length, non-terminal are otherwise.
 + symbol syntax group - symbols comprized of different character groups, which allow for word boundry determination
 
-grouping                | example input   | regex         | description
------------------------ | --------------- | ------------- | -----------
-character class         |                 | [a-zA-Z0-9,-] |
-special character class |                 | .             | 
-special character class |                 | .             | 
-special character class |                 | .             | 
-special character class |                 | .             | 
-special character class |                 | .             | 
-escape class
+class             | example input   | regex                 | description
+----------------- | --------------- | --------------------- | -----------
+character class   |                 | [a-zA-Z0-9]           | any alphanumeric point
+character class   |                 | [a-zA-Z0-9-]          | any alphanumeric or a dash point
+character class   |                 | [\w-]                 | any alphanumeric or a dash point
+character class   |                 | [[:alpha:]]           | any alpha point
+character class   |                 | [[:alpha:][:digit:]-] | any alpha, numeric or a dash point
+character class   |                 | [[:alnum:]]           | any alphanumeric point
+character class   |                 | [^a-zA-Z0-9]          | any except alphanumeric point
+character class   |                 | [^a-zA-Z0-9-]         | any except alphanumeric or a dash point
+character class   |                 | [^\w-]                | any except alphanumeric or a dash point
+character class   |                 | [^[:alpha:]]          | any except alpha point
+character class   |                 | [^[:alnum:]]          | any except alphanumeric point
+escaped character |                 | \\*non-escape*        | any non-escaped literal character 
+escaped character |                 | \\n                   | linefeed point
+escaped character |                 | \\r                   | return point
+escaped character |                 | \\t                   | tab point
+escaped character |                 | \\v                   | formfeed point
+escape class      |                 | \\D                   | any non-digit point
+escape class      |                 | \\N                   | any point except linefeed
+escape class      |                 | \\R                   | any point except return
+escape class      |                 | \\S                   | any non-whitespace point
+escape class      |                 | \\T                   | any point except tab
+escape class      |                 | \\V                   | any non-vertical whitespace point
+escape class      |                 | \\W                   | any non-alphanumeric point
+escape class      |                 | \\d                   | any digit point
+escape class      |                 | \\s                   | any whitespace point
+escape class      |                 | \\w                   | any alphanumeric point
+special character |                 | .                     | any characher except new line and end of line characters
 
 + symbol syntax quantifiers - symbol recognition using limits with greedy, docile, possessive, lazy and expective
 
