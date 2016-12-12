@@ -4,6 +4,17 @@ a configurable tokenizer and parser for generic purposes.  It was developed for 
 Concepts:
 + terminal and non-terminal symbols - terminal symbols are those with a fixed pattern and length, non-terminal are otherwise.
 + symbol syntax group - symbols comprized of different character groups, which allow for word boundry determination
+
+grouping                | example input   | regex         | description
+----------------------- | --------------- | ------------- | -----------
+character class         |                 | [a-zA-Z0-9,-] |
+special character class |                 | .             | 
+special character class |                 | .             | 
+special character class |                 | .             | 
+special character class |                 | .             | 
+special character class |                 | .             | 
+escape class
+
 + symbol syntax quantifiers - symbol recognition using limits with greedy, docile, possessive, lazy and expective
 
 quantifier        | example input   | regex    | description
@@ -22,13 +33,13 @@ greedy,expective  |                 | A{m}B    | m times, as many as possible (g
 greedy,expective  |                 | A{m,}B   | m to n, as many as possible (greedy), until B (expective) 
 greedy,expective  |                 | A{m,n}B  | m to n, as many as possible (greedy), until B (expective) 
 greedy,expective  |                 | A{,n}B   | 0 to n, as many as possible (greedy), until B (expective) 
-greedy,possessive |                 | A++      | 1 or more, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A\*+     | 0 or more, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A?+      | 0 or 1, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A{m}+    | m times, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A{m,}+   | m or more, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A{m,n}+  | m to n, as many as possible (greedy), block backtracking (possessive)
-greedy,possessive |                 | A{,n}+   | 0 to n, as many as possible (greedy), block backtracking (possessive)
+greedy,possessive |                 | A++      | 1 or more, as many as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A\*+     | 0 or more, as few as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A?+      | 0 or 1, as many as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A{m}+    | m times, as many as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A{m,}+   | m or more, as many as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A{m,n}+  | m to n, as many as possible (greedy), no backtracking (possessive)
+greedy,possessive |                 | A{,n}+   | 0 to n, as many as possible (greedy), no backtracking (possessive)
 lazy              |                 | A+?      | 1 or more, as few as possible (lazy) 
 lazy              |                 | A\*?     | 0 or more, as few as possible (lazy) 
 lazy              |                 | A??      | 0 or 1, as few as possible (lazy) 
